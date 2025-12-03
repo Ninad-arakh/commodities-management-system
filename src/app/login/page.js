@@ -3,22 +3,31 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import one from "@/assets/red.jpg";
+import two from "@/assets/blue.jpg";
+import Image from "next/image";
+import google from "@/assets/google.png";
+import facebook from "@/assets/facebook.png";
 
 /**
  * Login Page Component
- * Handles basic client-side authentication using localStorage.
- * Uses Next.js app directory routing and React Toastify for UX feedback.
+ * Performs simple client-side login using localStorage (mock auth).
+ * Includes field validation + checkbox validation for T&C acceptance.
  */
 const page = () => {
-  // Local component state for controlled inputs
+  // Controlled fields for email/password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Checkbox state for Terms & Conditions
+  const [isChecked, setIsChecked] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
     /**
-     * Auto-redirect if user is already authenticated.
-     * Ensures logged-in users don't revisit the login page.
+     * Redirects authenticated users away from login page.
+     * Prevents logged-in session from accessing login UI.
      */
     if (typeof window !== "undefined") {
       const user = localStorage.getItem("user");
@@ -28,61 +37,63 @@ const page = () => {
   }, []);
 
   /**
-   * Validates email + password format on the client.
-   * Throws controlled errors to keep flow consistent inside try/catch.
+   * Client-side validator for email, password, and T&C checkbox.
+   * Throws controlled errors that are caught inside loginHandler().
    */
   const validator = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // basic RFC email pattern
-    const passwordRegex = /^.{8}$/; // enforces exactly 8 characters
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^.{8,}$/;
+
     const trimmedEmail = email.trim();
     const trimmedPass = password.trim();
 
-    const isValidEmail = emailRegex.test(trimmedEmail);
-    const isValidPass = passwordRegex.test(trimmedPass);
-
-    if (!isValidEmail) {
+    if (!emailRegex.test(trimmedEmail)) {
       throw new Error("Please enter valid Email!");
     }
-    if (!isValidPass) {
-      throw new Error(
-        "Password must be at least 8 chars long! no space allowed!"
-      );
+
+    if (!passwordRegex.test(trimmedPass)) {
+      throw new Error("Password must be at least 8 chars long!");
     }
+
+    // NEW → checkbox validation
+    if (!isChecked) {
+      throw new Error("You must agree to Terms, Privacy Policy & Fees!");
+    }
+
     return true;
   };
 
   /**
-   * Handles login attempt.
-   * Validates input → stores session → redirects to home.
-   * Uses toast notifications for error handling.
+   * Handles login flow:
+   * 1. Validate data
+   * 2. Store user to localStorage
+   * 3. Redirect to home
    */
   const loginHandler = async () => {
     try {
-      validator(); // protect early against invalid credentials
-      console.log("validation success!");
+      validator(); // run all validations first
 
       const trimmedEmail = email.trim();
       const trimmedPass = password.trim();
 
-      // Mock user object — in real apps this would come from backend auth
+      // Mock user object (placeholder for real backend auth)
       const user = { trimmedEmail, trimmedPass, isManager: true };
 
-      // Persist session locally
+      // Save auth session
       localStorage.setItem("user", JSON.stringify(user));
 
-      // Navigate user to the dashboard/home
+      // Redirect to Home/Dashboard
       router.push("/");
     } catch (err) {
-      console.log(err);
-      toast.error(err); // display user-friendly error message
+      toast.error(err.message); // show toaster error
     }
   };
 
   return (
-    <div className="w-full box-border h-[80dvh] flex items-center">
-      {/* Toast notifications container */}
+    <div className="w-full box-border h-screen flex items-center border">
+      {/* React Toastify Container */}
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={true}
@@ -96,69 +107,88 @@ const page = () => {
         enableMultiContainer={false}
       />
 
-      {/* Login form wrapper */}
-      <div className="border border-white/25 md:w-5/12 w-11/12 h-[60dvh] mx-auto flex flex-col text-center py-3 px-5 rounded-3xl shadow-2xl">
-        <h1 className="text-3xl font-bold mt-8">LOGIN</h1>
+      <div className="flex w-full h-full">
+        <div className="md:w-7/12 w-full flex justify-center items-center">
+          {/* Form Card Wrapper */}
+          <div className="border border-white/25 md:w-7/12 w-11/12 h-[60dvh] mx-auto flex flex-col text-center py-3 px-5 rounded-3xl -mt-[10vh]">
+            <h1 className="text-3xl font-bold">Welcome Back</h1>
+            <h3 className="text-lg">Sign Up For Free</h3>
 
-        {/* 
-          Using controlled components to capture user input.
-          Prevents default form submit → triggers login handler.
-        */}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            loginHandler();
-          }}
-          className="flex flex-col gap-6 mt-16"
-        >
-          {/* Email input field */}
-          <div className="text-left flex flex-col gap-2">
-            <label>Email</label>
-            <input
-              type="text"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@example.com"
-              className={`py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-300 dark:placeholder-neutral-500`}
-            />
-          </div>
-
-          {/* Password input field */}
-          <div className="text-left flex flex-col gap-2">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              required
-              placeholder="at least 8 chars"
-              onChange={(e) => setPassword(e.target.value)}
-              className={`py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-300 dark:placeholder-neutral-500`}
-            />
-          </div>
-
-          {/* Submit button */}
-          <div className="mt-3">
-            <button
-              className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-green-800 rounded-md hover:bg-green-700 sm:w-auto cursor-pointer"
-              onClick={() => loginHandler()}
+            {/* Form Section */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                loginHandler();
+              }}
+              className="flex flex-col gap-4"
             >
-              Login
-              <svg
-                className="w-4 h-4 ml-1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </button>
+              {/* Email Input */}
+              <div className="text-left flex flex-col gap-1">
+                <label>Email</label>
+                <input
+                  type="text"
+                  value={email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-[#f3f4f8]"
+                />
+              </div>
+
+              {/* Password Input */}
+              <div className="text-left flex flex-col gap-1">
+                <label>Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  required
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-[#f3f4f8]"
+                />
+              </div>
+
+              {/* Terms Checkbox */}
+              <label className="cursor-pointer text-left flex gap-2 items-center">
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={(e) => setIsChecked(e.target.checked)}
+                />
+                I agree to all Terms, Privacy Policy and fees
+              </label>
+
+              {/* Submit Button */}
+              <button className="w-full rounded-2xl bg-[#8044fe] py-2 text-white cursor-pointer">
+                Get Started
+              </button>
+            </form>
+
+            <h2 className="font-medium text-sm mx-auto my-4">OR</h2>
+
+            {/* Social Login Buttons */}
+            <div className="flex flex-col gap-3">
+              <button className="w-full border border-gray-500/40 rounded-2xl py-2 cursor-pointer flex justify-center items-center gap-1">
+                <Image src={google} alt="google png" className="w-6 h-6" /> Sign
+                in with Google
+              </button>
+
+              <button className="w-full border border-gray-500/40 rounded-2xl py-2 cursor-pointer flex justify-center items-center gap-1">
+                <Image src={facebook} alt="facebook png" className="w-6 h-6" />
+                Sign in with Facebook
+              </button>
+            </div>
           </div>
-        </form>
+        </div>
+
+        {/* Side Image Section */}
+        <div className="md:w-5/12 md:h-full w-0 h-0">
+          <Image
+            src={one}
+            alt="sideImage"
+            className="w-full h-full object-cover bg-cover"
+          />
+        </div>
       </div>
     </div>
   );
