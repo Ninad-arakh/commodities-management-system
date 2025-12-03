@@ -131,7 +131,7 @@ const page = () => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
-                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-[#f3f4f8]"
+                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
                 />
               </div>
 
@@ -144,7 +144,7 @@ const page = () => {
                   required
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
-                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-[#f3f4f8]"
+                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
                 />
               </div>
 

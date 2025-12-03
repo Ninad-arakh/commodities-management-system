@@ -24,7 +24,7 @@ const page = () => {
 
       if (userObj) {
         // Role-based redirection
-        userObj.isManager ? router.push("/dashboard") : router.push("/keeper");
+        userObj.isManager ? router.push("/dashboard") : router.push("/products");
       } else {
         // No session present → send to login page
         router.push("/login");
