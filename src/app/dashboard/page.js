@@ -2,14 +2,13 @@
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { IoIosSearch } from "react-icons/io";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { RxDashboard } from "react-icons/rx";
-import { MdOutlineNotificationsActive } from "react-icons/md";
-import userPic from "@/assets/office.png";
-import Image from "next/image";
+
 import { VscGraph } from "react-icons/vsc";
+import Overview from "@/components/Overview";
+import ResentSales from "@/components/RecentSales";
+import StatsOne from "@/components/StatsOne";
 import { IoMdArrowDropup } from "react-icons/io";
+import Navbar from "@/components/Navbar";
 
 const page = () => {
   const router = useRouter();
@@ -26,42 +25,18 @@ const page = () => {
     }
   }, []);
   return (
-    <div className="bg-[#e9eef4] w- box-border grid grid-cols-12 gap-2 relative">
+    <div className="bg-pageBackground w- box-border grid grid-cols-12 gap-2 relative">
       <div className="sm:col-span-2 h-screen sticky top-0">
         {" "}
         <Sidebar />
       </div>
+
       <div className=" md:col-span-10 col-span-12  py-4 px-5 pt-8 ">
-        <div className="w-full flex justify-between ">
-          <div className="flex gap-6">
-            <div className="flex items-center gap-2  bg-background rounded-lg w-[25vw] px-2">
-              <input type="text" className="flex-1 outline-none " />
-              <IoIosSearch className="text-gray-500" />
-            </div>
-            <button className="px-3 py-1 bg-[#1777ff] text-white rounded-lg cursor-pointer text-sm">
-              Search
-            </button>
-          </div>
-
-          <div className="flex gap-3 items-center">
-            <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-background shadow cursor-pointer">
-              <h2 className="text-sm ">Admin</h2>
-              <RiArrowDropDownLine />
-            </div>
-
-            <RxDashboard className="w-6 h-6 cursor-pointer" />
-
-            <MdOutlineNotificationsActive className="w-6 h-6 cursor-pointer" />
-
-            <div className="w-7 h-7 bg-gray-400 rounded-full overflow-hidden cursor-pointer">
-              <Image src={userPic} alt="userProfile" />
-            </div>
-          </div>
-        </div>
+        <Navbar/>
 
         <div className="w-full mt-8 flex justify-between items-center px-1">
           <h2 className="text-2xl">Dashboard</h2>
-          <button className="px-2 py-1 bg-[#615cf7] text-background rounded-lg cursor-pointer">
+          <button className="px-2 py-1 bg-[#615cf7] text-white rounded-lg cursor-pointer">
             + Add New Product
           </button>
         </div>
@@ -114,6 +89,19 @@ const page = () => {
               <span className="text-green-500">70.5%</span>
             </p>
           </div>
+        </div>
+
+        <div className="grid grid-cols-12 gap-6  w-full mt-8">
+          <div className="col-span-7 bg-background rounded-xl ">
+            <Overview />
+          </div>
+          <div className="col-span-5 bg-background rounded-xl">
+            <ResentSales />
+          </div>
+        </div>
+
+        <div className="w-full mt-8">
+          <StatsOne />
         </div>
       </div>
     </div>
