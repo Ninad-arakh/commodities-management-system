@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <div className="w-full flex justify-between ">
       <div className="flex gap-6">
-        <div className="flex items-center gap-2  bg-background rounded-lg w-[25vw] px-2">
+        <div className="flex items-center gap-2  bg-dashboard rounded-lg w-[25vw] px-2">
           <input type="text" className="flex-1 outline-none " />
           <IoIosSearch className="text-gray-500" />
         </div>
@@ -34,7 +34,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-background shadow cursor-pointer">
+        <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
           <h2 className="text-sm ">Admin</h2>
           <RiArrowDropDownLine />
         </div>

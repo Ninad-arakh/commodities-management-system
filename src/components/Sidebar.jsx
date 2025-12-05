@@ -23,15 +23,15 @@ const Sidebar = () => {
       </div>
 
       <div className="flex flex-col gap-2 w-full items-center px-2">
-        <div className="flex justify-between items-center bg-background rounded-lg w-full px-3 py-1 cursor-pointer">
-          <div className="flex items-center gap-3">
+        <div className="flex justify-between items-center bg-dashboard rounded-lg w-full px-3 py-1 cursor-pointer">
+          <div className="flex items-center gap-3 ">
             <IoHomeOutline className=" h-5 w-5" />
             <h2 className="">Home</h2>
           </div>
           <RiArrowDropDownLine className=" h-7 w-8 " />
         </div>
 
-        <div className="flex justify-between items-center bg-background rounded-lg w-full px-3 py-1 cursor-pointer">
+        <div className="flex justify-between items-center bg-dashboard rounded-lg w-full px-3 py-1 cursor-pointer">
           <div className="flex items-center gap-3">
             <RxDashboard className=" h-5 w-5" />
             <h2 className="">Dashboard</h2>
@@ -50,7 +50,7 @@ const Sidebar = () => {
           <div className="flex px-2 gap-4 py-1">
             <div className="bg-black w-px"></div>
             <div className="w-full gap-2 flex flex-col">
-              <h2 className="py-1 px-2 rounded-lg w-full bg-background cursor-pointer">Product</h2>
+              <h2 className="py-1 px-2 rounded-lg w-full bg-dashboard cursor-pointer">Product</h2>
               <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Add Product</h2>
             </div>
           </div>

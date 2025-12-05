@@ -2,18 +2,22 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #000000;
   --inputBox: #f3f4f8;
   --textGray : #747474;
   --pageBackground: #e9eef4;
+  --grayBlock: #f3f3f3;
+  --dashboard: #ffffff;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #f6ecfb;
+  --background: #000000;
+  --foreground: #ffffff;
   --inputBox: #151515;
   --textGray: #5a5a5a;
   --pageBackground: #030303;
+  --grayBlock: #545454;
+  --dashboard: #262626;
 }
 
 @theme inline {
@@ -21,6 +25,8 @@
   --color-foreground: var(--foreground);
   --color-inputBox: var(--inputBox);
   --color-textGray: var(--textGray);
+  --color-grayBlock: var(--grayBlock);
+  --color-dashboard: var(--dashboard);
   --color-pageBackground: var(--pageBackground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

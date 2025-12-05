@@ -42,7 +42,7 @@ const page = () => {
         </div>
 
         <div className="w-full px-1 grid md:grid-cols-4 grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-          <div className=" bg-background rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Total Earnings</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -54,7 +54,7 @@ const page = () => {
             </p>
           </div>
 
-          <div className=" bg-background rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Views</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -66,7 +66,7 @@ const page = () => {
             </p>
           </div>
 
-          <div className=" bg-background rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Total Sales</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -78,7 +78,7 @@ const page = () => {
             </p>
           </div>
 
-          <div className=" bg-background rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Subscriptions</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -92,10 +92,10 @@ const page = () => {
         </div>
 
         <div className="grid grid-cols-12 gap-6  w-full mt-8">
-          <div className="col-span-7 bg-background rounded-xl ">
+          <div className="col-span-7 bg-dashboard rounded-xl ">
             <Overview />
           </div>
-          <div className="col-span-5 bg-background rounded-xl">
+          <div className="col-span-5 bg-dashboard rounded-xl">
             <ResentSales />
           </div>
         </div>
