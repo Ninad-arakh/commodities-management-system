@@ -26,7 +26,7 @@ const page = () => {
     }
   }, []);
   return (
-    <div className="bg-pageBackground w- box-border grid grid-cols-12 gap-2 relative">
+    <div className="bg-pageBackground w- box-border grid grid-cols-12 gap-2 relative  pb-4">
       <div className="sm:col-span-2 h-screen sticky top-0">
         {" "}
         <Sidebar />
