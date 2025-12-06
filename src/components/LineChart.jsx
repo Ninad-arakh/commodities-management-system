@@ -12,7 +12,7 @@ import {
 import { earningsData } from "@/common/constants";
 import TotalEarningsTop from "./TotalEarningsTop";
 
-const linechart = () => {
+const Linechart = () => {
   const CustomXAxisTick = ({ x, y, payload }) => {
     return (
       <text
@@ -30,7 +30,7 @@ const linechart = () => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip bg-dashboard rounded-xl p-3 shadow">
-          <p className="label text-semibold">{payload[0].value}</p>
+          <p className="label text-semibold">{payload[0].payload.name}</p>
           <p className="label text-[#21bb73]">Main: {payload[0].payload.main}</p>
           <p className="label text-[#21bb735f]">Secondary: {payload[0].payload.secondary}</p>
         </div>
@@ -100,4 +100,4 @@ const linechart = () => {
   );
 };
 
-export default linechart;
+export default Linechart;

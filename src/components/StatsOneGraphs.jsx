@@ -1,18 +1,27 @@
 import React from "react";
-import Barchart from "./LineChart";
+import Linechart from "./LineChart";
+import Barchart from "./Barchart";
+import Subscriptions from "./Subscriptions";
+import EarningsChart from "./EarningsChart";
 
 const StatsOneGraphs = () => {
   return (
     <div>
       <div className="grid grid-cols-12 gap-6 mt-7 ">
         <div className="col-span-8 rounded-xl p-7 bg-dashboard">
+          <Linechart />
+        </div>
+        <div className="col-span-4 rounded-xl px-7 bg-dashboard">
           <Barchart />
         </div>
-        <div className="col-span-4 rounded-xl p-7 bg-dashboard">g</div>
       </div>
       <div className="grid grid-cols-12 gap-6 mt-7 ">
-        <div className="col-span-8 rounded-xl p-7 bg-dashboard">g</div>
-        <div className="col-span-4 rounded-xl p-7 bg-dashboard">g</div>
+        <div className="col-span-8 rounded-xl p-7 bg-dashboard">
+          <EarningsChart />
+        </div>
+        <div className="col-span-4 rounded-xl p-7 bg-dashboard">
+          <Subscriptions />
+        </div>
       </div>
     </div>
   );
