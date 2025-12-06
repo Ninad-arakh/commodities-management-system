@@ -68,3 +68,22 @@ export const data = [
   { day: "Sa", actual: 280, projected: 400 },
   { day: "Su", actual: 310, projected: 390 },
 ];
+
+export const StatsEarningData = [
+  { date: "Nov 20", current: 120, previous: 80 },
+  { date: "Nov 22", current: 110, previous: 95 },
+  { date: "Nov 24", current: 115, previous: 90 },
+  { date: "Nov 26", current: 130, previous: 85 },
+  { date: "Nov 28", current: 122, previous: 70 },
+  { date: "Nov 30", current: 118, previous: 78 },
+  { date: "Dec 2",  current: 125, previous: 92 },
+  { date: "Dec 4",  current: 120, previous: 100 },
+  { date: "Dec 6",  current: 128, previous: 105 },
+  { date: "Dec 8",  current: 135, previous: 110 },
+  { date: "Dec 10", current: 130, previous: 108 },
+  { date: "Dec 12", current: 138, previous: 115 },
+  { date: "Dec 14", current: 150, previous: 120 },
+  { date: "Dec 16", current: 145, previous: 130 },
+  { date: "Dec 18", current: 155, previous: 140 },
+  { date: "Dec 20", current: 160, previous: 155 },
+];

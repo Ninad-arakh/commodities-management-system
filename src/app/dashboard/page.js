@@ -9,6 +9,7 @@ import ResentSales from "@/components/RecentSales";
 import StatsOne from "@/components/StatsOne";
 import { IoMdArrowDropup } from "react-icons/io";
 import Navbar from "@/components/Navbar";
+import StatsTwo from "@/components/StatsTwo";
 
 const page = () => {
   const router = useRouter();
@@ -102,6 +103,9 @@ const page = () => {
 
         <div className="w-full mt-8">
           <StatsOne />
+        </div>
+        <div className="w-full mt-8">
+          <StatsTwo />
         </div>
       </div>
     </div>

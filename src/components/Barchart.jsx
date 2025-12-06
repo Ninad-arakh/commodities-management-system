@@ -8,7 +8,7 @@ const Barchart = () => {
     if (active && payload && payload.length) {
       return (
         <div className=" bg-background px-5 py-4 rounded-xl shadow">
-          <h2 className="text-lg">{payload[0].payload.name}</h2>
+          <h2 className="text-lg">Month: {payload[0].payload.name}</h2>
           <h2 className="text-sm text-green-500">
             Value : {payload[0].payload.value}
           </h2>
@@ -44,7 +44,10 @@ const Barchart = () => {
             margin={{ left: -2, right: -2 }}
           >
             <Bar dataKey="value" fill={barColor} radius={7} />
-            <Tooltip content={<CustomeTooltip />} cursor={{fill:"transparent"}}/>
+            <Tooltip
+              content={<CustomeTooltip />}
+              cursor={{ fill: "transparent" }}
+            />
             {/* <XAxis dataKey={"name"}/> */}
           </BarChart>
         </ResponsiveContainer>

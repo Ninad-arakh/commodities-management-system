@@ -29,8 +29,8 @@ const Linechart = () => {
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip bg-dashboard rounded-xl p-3 shadow">
-          <p className="label text-semibold">{payload[0].payload.name}</p>
+        <div className="custom-tooltip bg-background rounded-xl p-3 shadow">
+          <p className="label text-semibold">Month: {payload[0].payload.name}</p>
           <p className="label text-[#21bb73]">Main: {payload[0].payload.main}</p>
           <p className="label text-[#21bb735f]">Secondary: {payload[0].payload.secondary}</p>
         </div>

@@ -15,7 +15,7 @@ const Overview = () => {
       // console.log("payload : ", payload);
       return (
         <div className=" bg-background px-5 py-4 rounded-xl shadow">
-          <h2 className="text-lg">{payload[0].payload.month}</h2>
+          <h2 className="text-lg">Month: {payload[0].payload.month}</h2>
           <h2 className="text-sm text-green-500">
             Value : {payload[0].payload.value}
           </h2>
