@@ -10,6 +10,7 @@
   --dashboard: #ffffff;
   --statsGraph: #25bc5b;
   --overviewGraph: #4095ff;
+  --subscriptionGraph: #ffa800;
 }
 
 .dark {
@@ -21,7 +22,8 @@
   --grayBlock: #545454;
   --dashboard: #262626;
   --statsGraph: #4ac9b8;
-  --c: #f9781c;
+  --overviewGraph: #fa7b1f;
+  --subscriptionGraph: #51d1ba;
 }
 
 @theme inline {
@@ -34,6 +36,7 @@
   --color-statsGraph: var(--statsGraph);
   --color-overviewGraph: var(--overviewGraph);
   --color-pageBackground: var(--pageBackground);
+  --color-subscriptionGraph: var(--subscriptionGraph);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

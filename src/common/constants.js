@@ -22,7 +22,7 @@ export const earningsData2 = [
   { name: "Jun", value: 2300 },
   { name: "Jul", value: 2500 },
   { name: "Aug", value: 2400 },
-]
+];
 
 export const overview = [
   { month: "Jan", value: 1500 },
@@ -36,8 +36,8 @@ export const overview = [
   { month: "Sep", value: 800 },
   { month: "Oct", value: 3200 },
   { month: "Nov", value: 1600 },
-  { month: "Dec", value: 3100 }
-]
+  { month: "Dec", value: 3100 },
+];
 
 export const weeklyEarnings = [
   { day: "Mo", high: 300, low: 200 },
@@ -46,7 +46,7 @@ export const weeklyEarnings = [
   { day: "Th", high: 520, low: 350 },
   { day: "Fr", high: 300, low: 200 },
   { day: "Sa", high: 350, low: 260 },
-  { day: "Su", high: 380, low: 310 }
+  { day: "Su", high: 380, low: 310 },
 ];
 
 export const subscriptionsData = [
@@ -56,7 +56,7 @@ export const subscriptionsData = [
   { name: "Th", value: 40 },
   { name: "Fr", value: 30 },
   { name: "Sa", value: 50 },
-  { name: "Su", value: 30 }
+  { name: "Su", value: 30 },
 ];
 
 export const data = [
@@ -76,14 +76,29 @@ export const StatsEarningData = [
   { date: "Nov 26", current: 130, previous: 85 },
   { date: "Nov 28", current: 122, previous: 70 },
   { date: "Nov 30", current: 118, previous: 78 },
-  { date: "Dec 2",  current: 125, previous: 92 },
-  { date: "Dec 4",  current: 120, previous: 100 },
-  { date: "Dec 6",  current: 128, previous: 105 },
-  { date: "Dec 8",  current: 135, previous: 110 },
+  { date: "Dec 2", current: 125, previous: 92 },
+  { date: "Dec 4", current: 120, previous: 100 },
+  { date: "Dec 6", current: 128, previous: 105 },
+  { date: "Dec 8", current: 135, previous: 110 },
   { date: "Dec 10", current: 130, previous: 108 },
   { date: "Dec 12", current: 138, previous: 115 },
   { date: "Dec 14", current: 150, previous: 120 },
   { date: "Dec 16", current: 145, previous: 130 },
   { date: "Dec 18", current: 155, previous: 140 },
   { date: "Dec 20", current: 160, previous: 155 },
+];
+
+export const chartData = [
+  { month: "Jan", value: 8 },
+  { month: "Feb", value: 5 },
+  { month: "Mar", value: 3 },
+  { month: "Apr", value: 2 },
+  { month: "May", value: 1 },
+  { month: "Jun", value: 3 },
+  { month: "Jul", value: 4 },
+  { month: "Aug", value: 2 },
+  { month: "Sep", value: 1 },
+  { month: "Oct", value: 3 },
+  { month: "Nov", value: 7 },
+  { month: "Dec", value: 10 },
 ];
