@@ -10,8 +10,9 @@ import StatsOne from "@/components/StatsOne";
 import { IoMdArrowDropup } from "react-icons/io";
 import Navbar from "@/components/Navbar";
 import StatsTwo from "@/components/StatsTwo";
+import Link from "next/link";
 
-const page = () => {
+const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -37,9 +38,11 @@ const page = () => {
 
         <div className="w-full mt-8 flex justify-between items-center px-1">
           <h2 className="text-2xl">Dashboard</h2>
-          <button className="px-2 py-1 bg-[#615cf7] text-white rounded-lg cursor-pointer">
-            + Add New Product
-          </button>
+          <Link href={"/addproduct"}>
+            <button className="px-2 py-1 bg-[#615cf7] text-white rounded-lg cursor-pointer">
+              + Add New Product
+            </button>
+          </Link>
         </div>
 
         <div className="w-full px-1 grid md:grid-cols-4 grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
@@ -112,4 +115,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Dashboard;

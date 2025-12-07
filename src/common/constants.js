@@ -102,3 +102,85 @@ export const chartData = [
   { month: "Nov", value: 7 },
   { month: "Dec", value: 10 },
 ];
+
+
+export const products = [
+  {
+    productName: "iPhone 12 Pro",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Macbook Pro 2023",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Samsung Galaxy S22",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Dell XPS 13",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Sony WH-1000XM5",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Apple Watch Series 7",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Google Pixel 7",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "HP Spectre x360",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Apple AirPods Pro",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Microsoft Surface Laptop 4",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "OnePlus 9 Pro",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "GoPro Hero 10 Black",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  },
+  {
+    productName: "Razer Blade 15",
+    views: 14000,
+    pricing: 1.00,
+    revenue: 164.00
+  }
+];

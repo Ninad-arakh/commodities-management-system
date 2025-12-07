@@ -14,7 +14,7 @@ import facebook from "@/assets/facebook.png";
  * Performs simple client-side login using localStorage (mock auth).
  * Includes field validation + checkbox validation for T&C acceptance.
  */
-const page = () => {
+const Login = () => {
   // Controlled fields for email/password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -77,7 +77,7 @@ const page = () => {
       const trimmedPass = password.trim();
 
       // Mock user object (placeholder for real backend auth)
-      const user = { trimmedEmail, trimmedPass, isManager: true };
+      const user = { email:trimmedEmail, password: trimmedPass, isManager: true };
 
       // Save auth session
       localStorage.setItem("user", JSON.stringify(user));
@@ -196,4 +196,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

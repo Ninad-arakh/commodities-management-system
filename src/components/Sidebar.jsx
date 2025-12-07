@@ -9,8 +9,12 @@ import { VscGraph } from "react-icons/vsc";
 import { CiWallet } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { GrHelpBook } from "react-icons/gr";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Sidebar = () => {
+  const pathname = usePathname();
+  console.log("pathname : ", typeof pathname);
   return (
     <div className="w-full text-sm">
       <div>
@@ -31,13 +35,19 @@ const Sidebar = () => {
           <RiArrowDropDownLine className=" h-7 w-8 " />
         </div>
 
-        <div className="flex justify-between items-center bg-dashboard rounded-lg w-full px-3 py-1 cursor-pointer">
+        <Link
+          href={"/dashboard"}
+          className={`flex justify-between items-center ${
+            pathname === "/dashboard" ? "bg-dashboard" : ""
+          } rounded-lg w-full px-3 py-1 cursor-pointer`}
+        >
           <div className="flex items-center gap-3">
             <RxDashboard className=" h-5 w-5" />
+
             <h2 className="">Dashboard</h2>
           </div>
           <RiArrowDropDownLine className=" h-7 w-8 " />
-        </div>
+        </Link>
 
         <div className=" rounded-lg w-full px-3 py-1">
           <div className="flex justify-between  w-full cursor-pointer">
@@ -50,8 +60,24 @@ const Sidebar = () => {
           <div className="flex px-2 gap-4 py-1">
             <div className="bg-black w-px"></div>
             <div className="w-full gap-2 flex flex-col">
-              <h2 className="py-1 px-2 rounded-lg w-full bg-dashboard cursor-pointer">Product</h2>
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Add Product</h2>
+              <Link href={"/products"}>
+                <h2
+                  className={`py-1 px-2 rounded-lg w-full ${
+                    pathname === "/products" ? "bg-dashboard" : ""
+                  } cursor-pointer`}
+                >
+                  Product
+                </h2>
+              </Link>
+              <Link href={"/addproduct"}>
+                <h2
+                  className={`py-1 px-2 rounded-lg w-full ${
+                    pathname === "/addproduct" ? "bg-dashboard" : ""
+                  } cursor-pointer`}
+                >
+                  Add Product
+                </h2>
+              </Link>
             </div>
           </div>
         </div>
@@ -67,8 +93,12 @@ const Sidebar = () => {
           <div className="flex px-2 gap-4 py-1">
             <div className="bg-black w-px"></div>
             <div className="w-full gap-2 flex flex-col">
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Traffic</h2>
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Earning</h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                Traffic
+              </h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                Earning
+              </h2>
             </div>
           </div>
         </div>
@@ -84,8 +114,12 @@ const Sidebar = () => {
           <div className="flex px-2 gap-4 py-1">
             <div className="bg-black w-px"></div>
             <div className="w-full gap-2 flex flex-col">
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Payment</h2>
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Payout</h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                Payment
+              </h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                Payout
+              </h2>
             </div>
           </div>
         </div>
@@ -101,8 +135,12 @@ const Sidebar = () => {
           <div className="flex px-2 gap-4 py-1">
             <div className="bg-black w-px"></div>
             <div className="w-full gap-2 flex flex-col">
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">My Profile</h2>
-              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">Security</h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                My Profile
+              </h2>
+              <h2 className="py-1 px-2 rounded-lg w-full cursor-pointer">
+                Security
+              </h2>
             </div>
           </div>
         </div>

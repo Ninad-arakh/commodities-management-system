@@ -7,7 +7,9 @@ const Footer = () => {
       <div className="grid grid-cols-12 px-20 gap-18">
         <div className="col-span-4 ">
           <div className=" flex gap-5 px-2">
-            <p>logo</p>
+            <div className="w-6 h-6 bg-[#ff9000] rounded-md rotate-45 flex items-center justify-center">
+              <div className="w-[17px] h-[17px] bg-dashboard rounded-xs"></div>
+            </div>
             <h1 className="text-2xl font-bold">Opion</h1>
           </div>
           <p className="leading-tight mt-8 text-sm">
@@ -30,21 +32,27 @@ const Footer = () => {
 
         <div className="col-span-7  grid grid-cols-3 gap-5">
           <div className="px-2 flex flex-col gap-2">
-            <h2 className="text-lg font-semibold cursor-pointer">Get Started</h2>
+            <h2 className="text-lg font-semibold cursor-pointer">
+              Get Started
+            </h2>
             <h3 className="cursor-pointer">Service</h3>
             <h3 className="cursor-pointer">Contact Us</h3>
             <h3 className="cursor-pointer">Affiliate Program</h3>
             <h3 className="cursor-pointer">About Us</h3>
           </div>
           <div className="px-2 flex flex-col gap-2">
-            <h2 className="text-lg font-semibold cursor-pointer">Get Started</h2>
+            <h2 className="text-lg font-semibold cursor-pointer">
+              Get Started
+            </h2>
             <h3 className="cursor-pointer">Dashboard</h3>
             <h3 className="cursor-pointer">Platform</h3>
             <h3 className="cursor-pointer">Workout Libary</h3>
             <h3 className="cursor-pointer">App Design</h3>
           </div>
           <div className="px-2 flex flex-col gap-2">
-            <h2 className="text-lg font-semibold cursor-pointer">Get Started</h2>
+            <h2 className="text-lg font-semibold cursor-pointer">
+              Get Started
+            </h2>
             <h3 className="cursor-pointer">About Us</h3>
           </div>
         </div>
