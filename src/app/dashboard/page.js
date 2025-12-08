@@ -16,16 +16,30 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const user = localStorage.getItem("user");
-      const userObj = JSON.parse(user);
-      if (userObj === null || userObj === "undefined") {
-        router.push("/login");
-      } else if (!userObj.isManager) {
-        router.push("/products");
-      }
+    if (typeof window === "undefined") return;
+
+    const rawUser = localStorage.getItem("user");
+
+    if (!rawUser) {
+      router.replace("/login");
+      return;
+    }
+
+    let userObj = null;
+
+    try {
+      userObj = JSON.parse(rawUser);
+    } catch (e) {
+      localStorage.removeItem("user");
+      router.replace("/login");
+      return;
+    }
+
+    if (!userObj.isManager) {
+      router.replace("/products");
     }
   }, []);
+
   return (
     <div className="bg-pageBackground w- box-border grid grid-cols-12 gap-2 relative  pb-4">
       <div className="sm:col-span-2 h-screen sticky top-0">
@@ -34,7 +48,7 @@ const Dashboard = () => {
       </div>
 
       <div className=" md:col-span-10 col-span-12  py-4 px-5 pt-8 ">
-        <Navbar/>
+        <Navbar />
 
         <div className="w-full mt-8 flex justify-between items-center px-1">
           <h2 className="text-2xl">Dashboard</h2>

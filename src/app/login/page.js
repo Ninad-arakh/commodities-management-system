@@ -8,6 +8,8 @@ import two from "@/assets/blue.jpg";
 import Image from "next/image";
 import google from "@/assets/google.png";
 import facebook from "@/assets/facebook.png";
+import axios from "axios";
+import { API_URL } from "@/common/constants";
 
 /**
  * Login Page Component
@@ -18,6 +20,7 @@ const Login = () => {
   // Controlled fields for email/password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   // Checkbox state for Terms & Conditions
   const [isChecked, setIsChecked] = useState(false);
@@ -77,15 +80,29 @@ const Login = () => {
       const trimmedPass = password.trim();
 
       // Mock user object (placeholder for real backend auth)
-      const user = { email:trimmedEmail, password: trimmedPass, isManager: true };
+      // const user = { email:trimmedEmail, password: trimmedPass, isManager: true };
 
-      // Save auth session
-      localStorage.setItem("user", JSON.stringify(user));
+      const response = await axios.post(`/api/login/`, {
+        email: trimmedEmail,
+        password: trimmedPass,
+      });
+      console.log("response: ", response);
 
-      // Redirect to Home/Dashboard
-      router.push("/");
+      if (response.status === 200) {
+        // Save auth session
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+
+        // Redirect to Home/Dashboard
+        router.push("/");
+      }
     } catch (err) {
-      toast.error(err.message); // show toaster error
+      if(err.status === 401) {
+        toast.error("Invalid Credentials!")
+      }
+      else{
+        toast.error(err.message); // show toaster error
+      }
     }
   };
 
@@ -178,7 +195,10 @@ const Login = () => {
                 Sign in with Facebook
               </button>
 
-              <h4 className="text-sm">Already have an account? <span className="text-blue-500 cursor-pointer">Login</span></h4>
+              <h4 className="text-sm">
+                Already have an account?{" "}
+                <span className="text-blue-500 cursor-pointer">Login</span>
+              </h4>
             </div>
           </div>
         </div>
