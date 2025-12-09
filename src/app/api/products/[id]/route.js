@@ -5,20 +5,19 @@ import { products } from "@/common/constants";
 export const dynamic = "force-dynamic";
 
 // ======================= GET SINGLE PRODUCT =======================
-export async function GET(req, { params }) {
+export async function GET(req, ctx) {
+  const params = await ctx.params; 
   const id = Number(params.id);
-
   const product = products.find((p) => p.id === id);
-
   if (!product) {
     return NextResponse.json({ message: "Product not found" }, { status: 404 });
   }
-
   return NextResponse.json(product, { status: 200 });
 }
 
 // ======================= UPDATE PRODUCT =======================
-export async function PUT(req, { params }) {
+export async function PUT(req, ctx) {
+  const params = await ctx.params; 
   const id = Number(params.id);
   const body = await req.json();
 
@@ -44,7 +43,8 @@ export async function PUT(req, { params }) {
 }
 
 // ======================= DELETE PRODUCT =======================
-export async function DELETE(req, { params }) {
+export async function DELETE(req, ctx) {
+  const params = await ctx.params; 
   const id = Number(params.id);
 
   const productIndex = products.findIndex((p) => p.id === id);

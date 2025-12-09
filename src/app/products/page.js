@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { HiArrowsUpDown } from "react-icons/hi2";
 import Product from "@/components/Product";
-import { products } from "@/common/constants";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -14,7 +13,7 @@ import Loader from "@/components/Loader";
 
 const Products = () => {
   const router = useRouter();
-  const [productss, setProducts] = useState(null);
+  const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const getProducts = async () => {
@@ -22,6 +21,7 @@ const Products = () => {
     if (response.status === 200) {
       setProducts(response.data);
       setIsLoading(false);
+      // console.log("products : ", response.data)
     }
   };
   useEffect(() => {
@@ -35,7 +35,7 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-    if (!productss) {
+    if (!products) {
       setIsLoading(true);
       getProducts();
     }
@@ -78,7 +78,7 @@ const Products = () => {
                 </div>
               </div>
 
-              <div className="w-full border-t border-b border-gray-400/30 flex justify-between px-5 py-2">
+              <div className="w-full border-t border-b border-gray-400/30 flex justify-between px-5 py-2 ">
                 <div className="text-textGray">
                   {" "}
                   <h3>Product Name</h3>
@@ -98,9 +98,9 @@ const Products = () => {
                   </h4>
                 </div>
               </div>
-              {productss !== null && (
+              {products !== null && (
                 <div className="w-full">
-                  {productss.map((p, id) => (
+                  {products.map((p, id) => (
                     <Product product={p} key={id} />
                   ))}
                 </div>
