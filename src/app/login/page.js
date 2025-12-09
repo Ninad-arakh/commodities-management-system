@@ -35,8 +35,11 @@ const Login = () => {
      */
     if (typeof window !== "undefined") {
       const user = localStorage.getItem("user");
-      const userObj = JSON.parse(user);
-      userObj ? router.push("/") : "";
+      const token = localStorage.getItem("token");
+      if (user && token) {
+        router.replace("/");
+        return;
+      }
     }
   }, []);
 
@@ -98,10 +101,9 @@ const Login = () => {
         router.push("/");
       }
     } catch (err) {
-      if(err.status === 401) {
-        toast.error("Invalid Credentials!")
-      }
-      else{
+      if (err.status === 401) {
+        toast.error("Invalid Credentials!");
+      } else {
         toast.error(err.message); // show toaster error
       }
     }
@@ -109,7 +111,7 @@ const Login = () => {
 
   return (
     <div className="w-full box-border h-screen flex items-center">
-      {isFirstTime && <PopupModal setIsFirstTime={setIsFirstTime}/>}
+      {isFirstTime && <PopupModal setIsFirstTime={setIsFirstTime} />}
       {/* React Toastify Container */}
       <ToastContainer
         position="bottom-right"

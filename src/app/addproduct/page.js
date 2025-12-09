@@ -1,9 +1,22 @@
+"use client";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const AddProduct = () => {
+  
+  const router = useRouter();
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const rawUser = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    if (!rawUser || !token) {
+      router.replace("/login");
+      return;
+    }
+  }, []);
   return (
     <div className="grid grid-cols-12 relative bg-pageBackground gap-2  pb-4">
       <div className="col-span-2 h-screen sticky top-0 ">

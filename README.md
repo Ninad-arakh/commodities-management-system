@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# 📦 Commodities Management System 
 
+A fully implemented **role-based commodities management system** built as part of the Slooze Frontend Take-Home Challenge.  
+This repository simulates a small-scale inventory management system with **authentication**, **route protection**, **role-restricted actions**, **product CRUD operations**, and modern UI features.
+
+---
+
+## 🚀 Project Summary
+
+This project implements the full feature set described in the challenge:
+
+- Email/password **login authentication** (with a login popup showing mock credentials).  
+- **Simulated backend** (mock API endpoints) that behave like real REST APIs.  
+- **Role-based access control** for `Manager` and `Store Keeper`.  
+- Full **CRUD** for products (create, read, update, delete).  
+- **Route protection** and role-based menu restrictions.  
+- **Light/Dark theme** with persistence to `localStorage`.  
+- UI polish: responsive layout, animations, hover states, reusable components.  
+- Session persistence using `localStorage`.
+
+---
+
+## 🧩 Features Implemented
+
+### 1. Authentication & Session
+- `POST /api/auth/login` — mock login endpoint.  
+- Login popup provides test credentials for quick testing.  
+- On successful login, store `token`, `role`, and `user` in `localStorage`.  
+- Route guards redirect unauthorized users to the login page.
+
+### 2. Role-Based Access
+- Two roles: `Manager` and `Store Keeper`.  
+- Managers have access to `/dashboard` and all admin features.  
+- Store Keepers can view and manage products but are restricted from the manager dashboard.  
+- UI menus and actions are shown/hidden or disabled based on the active role.
+
+### 3. Products (CRUD)
+- `GET /api/products` — fetch products list.  
+- `POST /api/products` — add a new product.  
+- `PUT /api/products/:id` — update product.  
+- `DELETE /api/products/:id` — delete product.  
+- Product model includes:  
+  - `id`  
+  - `productName`  
+  - `description`  
+  - `stock`  
+  - `views`  
+  - `pricing`  
+  - `revenue`  
+  - `category`  
+  - `discount`  
+  - `discountCategory`  
+  - `tags` (keywords)
+
+### 4. Dashboard (Manager Only)
+- Overview cards: total products, categories, low-stock items, recent updates.  
+- Charts and quick stats for managers.  
+- Dashboard route blocked for non-managers.
+
+### 5. UI & UX Enhancements
+- Light/Dark mode toggle stored in `localStorage`.  
+- Responsive layouts for mobile/tablet/desktop.  
+- Reusable UI components: `Sidebar`, `Header`, `Modal`, `ProductCard`, `DataTable`, `ProtectedRoute`.  
+- Smooth transitions and hover effects for buttons, cards, and inputs.
+
+---
+
+## 📁 Folder Structure (Suggested)
+```
+
+src/
+├── app/ # Next.js  routes (login, dashboard, products, etc.)
+│ ├── login/
+│ ├── dashboard/
+│ ├── products/
+| ├-- api/
+| | └── login/
+| | └── products/
+├── components/ # Reusable UI components
+└── constants/ # Mock data, routes, sample product data
+
+```
+
+
+---
+
+## 🔌 Mock API Behavior
+
+- All mock endpoints simulate network latency and return realistic HTTP statuses.  
+- Error handling demonstrates UI fallback states (toasts, inline errors).  
+- Mock token is returned on `POST /api/auth/login` and required for protected endpoints in the simulation.
+
+---
+
+## ▶️ How to Run Locally
+
+1. Clone the repository:
 ```bash
+git clone https://github.com/Ninad-arakh/commodities-management-system
+cd commodities-management-system
+```
+
+2. Install dependencies:
+```
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
+```
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open the app:
+```
+http://localhost:3000
+```
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔑 Test Credentials (Shown in Login Popup)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+###  1. Manager
+```
+email: manager@ninad.com
+password: manager123
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Store Keeper
+```
+email: store@ninad.com
+password: store123
+```

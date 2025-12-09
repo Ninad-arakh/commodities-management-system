@@ -17,16 +17,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
     const rawUser = localStorage.getItem("user");
-
-    if (!rawUser) {
+    const token = localStorage.getItem("token");
+    if (!rawUser || !token) {
       router.replace("/login");
       return;
     }
-
     let userObj = null;
-
     try {
       userObj = JSON.parse(rawUser);
     } catch (e) {
@@ -34,7 +31,6 @@ const Dashboard = () => {
       router.replace("/login");
       return;
     }
-
     if (!userObj.isManager) {
       router.replace("/products");
     }
