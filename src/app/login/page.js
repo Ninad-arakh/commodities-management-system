@@ -11,6 +11,8 @@ import facebook from "@/assets/facebook.png";
 import axios from "axios";
 import { API_URL } from "@/common/constants";
 import PopupModal from "@/components/PopupModal";
+import { IoMdEye } from "react-icons/io";
+import { IoMdEyeOff } from "react-icons/io";
 
 /**
  * Login Page Component
@@ -21,6 +23,7 @@ const Login = () => {
   // Controlled fields for email/password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(true);
 
   // Checkbox state for Terms & Conditions
@@ -42,7 +45,6 @@ const Login = () => {
       }
     }
   }, []);
-
 
   /**
    * Client-side validator for email, password, and T&C checkbox.
@@ -152,21 +154,34 @@ const Login = () => {
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
-                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
+                  className="py-2.5 sm:py-3 px-4 block w-full  border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
                 />
               </div>
 
               {/* Password Input */}
               <div className="text-left text-sm flex flex-col gap-1">
                 <label>Password</label>
-                <input
-                  type="password"
-                  value={password}
-                  required
-                  placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="py-2.5 sm:py-3 px-4 block w-full text-black border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
-                />
+                <div className="relative w-full flex justify-between items-center z-0">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    required
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="py-2.5 sm:py-3 px-4 block w-full  border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 bg-inputBox"
+                  />
+                  {!showPassword ? (
+                    <IoMdEye
+                      className="absolute right-0 mr-3 cursor-pointer p-1 w-6 h-6"
+                      onClick={() => setShowPassword(!showPassword)}
+                    />
+                  ) : (
+                    <IoMdEyeOff
+                      className="absolute right-0 mr-3 cursor-pointer p-1 w-6 h-6 "
+                      onClick={() => setShowPassword(!showPassword)}
+                    />
+                  )}
+                </div>
               </div>
 
               {/* Terms Checkbox */}

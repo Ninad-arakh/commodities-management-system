@@ -1,13 +1,43 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProduct = () => {
-  
   const router = useRouter();
+  const [productDetails, setProductDetails] = useState({
+    productName: "",
+    pricing: "",
+    category: "",
+    description: "",
+    tags: "",
+    discount: "",
+    discountCategory: "",
+  });
+
+  const addProductHandler = async () => {
+    try {
+      const isEmpty = Object.values(productDetails) !== "";
+      if (!isEmpty) {
+        const response = await axios.post("/api/products/", productDetails);
+        console.log(response);
+        if (response.status === 201) {
+          toast.success(response.data.message);
+        }
+      } else {
+        toast.error("Please fill all the fields!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong!");
+    }
+  };
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     const rawUser = localStorage.getItem("user");
@@ -23,6 +53,21 @@ const AddProduct = () => {
         <Sidebar />
       </div>
       <div className="col-span-10  py-4 px-5 pt-8 ">
+        {/* React Toastify Container */}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          limit={3}
+          enableMultiContainer={false}
+        />
         <Navbar />
 
         <div className="w-full mt-8 flex justify-between items-center px-1">
@@ -40,7 +85,10 @@ const AddProduct = () => {
             <button className="px-1 py-1 rounded-lg border border-red-500/80 text-sm text-red-500 cursor-pointer">
               Discard change
             </button>
-            <button className="px-1 py-1 rounded-lg bg-blue-500 text-sm text-white cursor-pointer">
+            <button
+              className="px-1 py-1 rounded-lg bg-blue-500 text-sm text-white cursor-pointer"
+              onClick={() => addProductHandler()}
+            >
               Save
             </button>
           </div>
@@ -54,6 +102,13 @@ const AddProduct = () => {
                 <label className="text-sm  text-textGray">Product Name</label>
                 <input
                   type="text"
+                  value={productDetails.productName}
+                  onChange={(e) =>
+                    setProductDetails({
+                      ...productDetails,
+                      productName: e.target.value,
+                    })
+                  }
                   placeholder="Product Name"
                   className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                 />
@@ -61,8 +116,13 @@ const AddProduct = () => {
                 <select
                   id="productCategory"
                   name="productCategory"
-                  // value={formData.productCategory}
-                  // onChange={handleChange}
+                  value={productDetails.category}
+                  onChange={(e) =>
+                    setProductDetails({
+                      ...productDetails,
+                      category: e.target.value,
+                    })
+                  }
                   className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                 >
                   <option value="">Product Category</option>
@@ -74,6 +134,13 @@ const AddProduct = () => {
                 <label className="text-sm  text-textGray">Description</label>
                 <textarea
                   rows={4}
+                  value={productDetails.description}
+                  onChange={(e) =>
+                    setProductDetails({
+                      ...productDetails,
+                      description: e.target.value,
+                    })
+                  }
                   placeholder="Description"
                   className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                 />
@@ -81,6 +148,13 @@ const AddProduct = () => {
                 <label className="text-sm  text-textGray">Tag Keyword</label>
                 <textarea
                   rows={4}
+                  value={productDetails.tags}
+                  onChange={(e) =>
+                    setProductDetails({
+                      ...productDetails,
+                      tags: e.target.value,
+                    })
+                  }
                   placeholder="Tag Keyword"
                   className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                 />
@@ -91,7 +165,14 @@ const AddProduct = () => {
               <div className="mt-5">
                 <label className="text-sm  text-textGray">Price</label>
                 <input
-                  type="text"
+                  type="number"
+                  value={productDetails.pricing}
+                  onChange={(e) =>
+                    setProductDetails({
+                      ...productDetails,
+                      pricing: e.target.value,
+                    })
+                  }
                   placeholder="Pricing"
                   className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                 />
@@ -100,7 +181,14 @@ const AddProduct = () => {
                   <div className="w-full">
                     <label className="text-sm  text-textGray">Discount</label>
                     <input
-                      type="text"
+                      type="number"
+                      value={productDetails.discount}
+                      onChange={(e) =>
+                        setProductDetails({
+                          ...productDetails,
+                          discount: e.target.value,
+                        })
+                      }
                       placeholder="Discount"
                       className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                     />
@@ -111,6 +199,13 @@ const AddProduct = () => {
                     </label>
                     <input
                       type="text"
+                      value={productDetails.discountCategory}
+                      onChange={(e) =>
+                        setProductDetails({
+                          ...productDetails,
+                          discountCategory: e.target.value,
+                        })
+                      }
                       placeholder="Discount Category"
                       className="w-full bg-inputBox rounded-lg px-5 py-2 mt-2 mb-5"
                     />
@@ -120,7 +215,7 @@ const AddProduct = () => {
             </div>
           </div>
           <div className="col-span-4 bg-dashboard rounded-xl px-8 py-5">
-            hello
+            product image and thumbnail here
           </div>
         </div>
       </div>

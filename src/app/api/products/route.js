@@ -12,6 +12,8 @@ export async function POST(req) {
     const body = await req.json();
     const newProduct = {
       id: products.length + 1,
+      views:15000,
+      revenue: 164.00,
       ...body,
     };
 

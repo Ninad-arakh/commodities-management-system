@@ -2,7 +2,7 @@ import React from "react";
 
 const PopupModal = ({ setIsFirstTime }) => {
   return (
-    <div className="w-full h-screen absolute inset-0 flex justify-center items-center bg-black/70 backdrop-blur-lg p-4">
+    <div className="w-full h-screen absolute inset-0 flex justify-center items-center bg-black/70 backdrop-blur-lg p-4 z-10">
       <div className="relative w-full sm:w-[45vw] sm:h-[70vh] bg-linear-to-br from-[#ff6a4f]/80 via-[#ffd7d7]/50 to-white/30 backdrop-blur-2xl shadow-[0_0_40px_rgba(255,120,100,0.3)] rounded-2xl flex flex-col items-center justify-center gap-10 p-10 ">
         {/* Close Button */}
         <button
