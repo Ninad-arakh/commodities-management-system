@@ -14,7 +14,6 @@ import Link from "next/link";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  console.log("pathname : ", typeof pathname);
   return (
     <div className="w-full text-sm">
       <div>

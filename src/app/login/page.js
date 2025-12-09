@@ -10,6 +10,7 @@ import google from "@/assets/google.png";
 import facebook from "@/assets/facebook.png";
 import axios from "axios";
 import { API_URL } from "@/common/constants";
+import PopupModal from "@/components/PopupModal";
 
 /**
  * Login Page Component
@@ -38,6 +39,7 @@ const Login = () => {
       userObj ? router.push("/") : "";
     }
   }, []);
+
 
   /**
    * Client-side validator for email, password, and T&C checkbox.
@@ -86,7 +88,6 @@ const Login = () => {
         email: trimmedEmail,
         password: trimmedPass,
       });
-      console.log("response: ", response);
 
       if (response.status === 200) {
         // Save auth session
@@ -108,6 +109,7 @@ const Login = () => {
 
   return (
     <div className="w-full box-border h-screen flex items-center">
+      {isFirstTime && <PopupModal setIsFirstTime={setIsFirstTime}/>}
       {/* React Toastify Container */}
       <ToastContainer
         position="bottom-right"
