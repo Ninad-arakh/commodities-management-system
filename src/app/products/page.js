@@ -78,22 +78,22 @@ const Products = () => {
                 </div>
               </div>
 
-              <div className="w-full border-t border-b border-gray-400/30 flex justify-between px-5 py-2 ">
-                <div className="text-textGray">
+              <div className="w-full border-t border-b border-gray-400/30 grid grid-cols-8 px-5 py-2 ">
+                <div className="text-textGray col-span-4">
                   {" "}
                   <h3>Product Name</h3>
                 </div>
-                <div className="flex  gap-8 w-[50%]">
-                  <h4 className="flex items-center text-textGray text-sm gap-1">
+                <div className="col-span-4  grid grid-cols-4">
+                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
                     Views <HiArrowsUpDown />
                   </h4>
-                  <h4 className="flex items-center text-textGray text-sm gap-1">
+                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
                     Pricing <HiArrowsUpDown />
                   </h4>
-                  <h4 className="flex items-center text-textGray text-sm gap-1">
+                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
                     Revenue <HiArrowsUpDown />
                   </h4>
-                  <h4 className="flex items-center text-textGray text-sm gap-1">
+                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
                     Manage <HiArrowsUpDown />
                   </h4>
                 </div>

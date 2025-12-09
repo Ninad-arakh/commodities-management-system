@@ -15,32 +15,34 @@ const Product = ({ product }) => {
       const response = await axios.delete(`/api/products/${id}`);
       console.log("response : ", response.data);
       if (response.status === 200) {
-        toast.success(response.data.message)
+        toast.success(response.data.message);
       }
     } catch (err) {
-      console.log(err)
-      toast.error("Something went wrong!")
+      console.log(err);
+      toast.error("Something went wrong!");
     }
   };
 
   return (
-    <div className="px-4 py-4 flex border-b border-gray-400/30 justify-between ">
+    <div className="px-4 py-4 grid grid-cols-8 border-b border-gray-400/30  ">
       {/* React Toastify Container */}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        limit={3}
-        enableMultiContainer={false}
-      />
-      <div className="flex items-center gap-5 ">
+      <div className="absolute">
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          limit={3}
+          enableMultiContainer={false}
+        />
+      </div>
+      <div className="flex items-center gap-5 col-span-4 ">
         <input type="checkbox" />
         <Image
           src={laptopImg}
@@ -49,18 +51,18 @@ const Product = ({ product }) => {
         />
         <h2>{productName}</h2>
       </div>
-      <div className="flex  justify-between w-[50%]">
-        <div className="flex items-center gap-10">
-          <h3>{views}</h3>
-          <h3>${pricing}</h3>
-          <h3>${revenue}</h3>
+      <div className=" col-span-4  grid grid-cols-4 ">
+        <div className="col-span-3 items-center gap-10  grid grid-cols-3">
+          <h3 className="col-span-1 ">{views}</h3>
+          <h3 className="col-span-1 ">${pricing}</h3>
+          <h3 className="col-span-1 ">${revenue}</h3>
         </div>
-        <div className="   flex py-2 gap-2">
-          <button className="flex  items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70">
+        <div className="   grid grid-cols-2 py-2 gap-2 col-span-1 ">
+          <button className="flex col-span-1 items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70">
             Edit <RiArrowDropDownLine />
           </button>
           <button
-            className="flex  items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70"
+            className="flex col-span-1 items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70"
             onClick={() => handleDelete()}
           >
             Delete
