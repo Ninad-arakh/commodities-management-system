@@ -46,10 +46,10 @@ const Products = () => {
       <div className="col-span-2 hidden md:block  h-screen sticky top-0 ">
         <Sidebar />
       </div>
-      <div className="col-span-10  py-4 px-5 pt-8 ">
+      <div className=" md:col-span-10 col-span-12  py-4 px-5 pt-8 ">
         <Navbar />
 
-        <div className="w-full mt-8 flex justify-between items-center px-1">
+        <div className="w-full mt-8 flex justify-between items-center px-1 ">
           <h2 className="text-2xl">Product</h2>
           <Link href={"/addproduct"}>
             <button className="px-2 py-1 bg-[#615cf7] text-white rounded-lg cursor-pointer">
@@ -61,13 +61,13 @@ const Products = () => {
         {!isLoading && (
           <div className="grid grid-cols-12 pt-8 gap-6 ">
             {/* main div on product page  */}
-            <div className="col-span-9 bg-dashboard rounded-2xl w-full  px-8 py-6 ">
-              <div className="flex justify-between px-4 mb-5">
-                <div className="flex gap-5">
-                  <h2 className="text-xl font-semibold">Published</h2>
-                  <h2 className="text-xl text-textGray">Draft</h2>
+            <div className="md:col-span-9 col-span-12 bg-dashboard rounded-2xl w-full  px-8 py-6 ">
+              <div className="flex justify-between px-1 md:px-4 mb-5">
+                <div className="flex gap-2 md:gap-5  items-center">
+                  <h2 className=" md:text-xl font-semibold">Published</h2>
+                  <h2 className=" md:text-xl text-textGray">Draft</h2>
                 </div>
-                <div className="flex gap-5 items-center">
+                <div className="flex gap-2 md:gap-5 items-center">
                   <button className="flex pap-2  items-center border border-gray-500 px-1 pl-2 cursor-pointer text-xs rounded-lg">
                     Filter <RiArrowDropDownLine className="w-8 h-8" />
                   </button>
@@ -78,13 +78,13 @@ const Products = () => {
                 </div>
               </div>
 
-              <div className="w-full border-t border-b border-gray-400/30 grid grid-cols-8 px-5 py-2 ">
-                <div className="text-textGray col-span-4">
+              <div className="w-full border-t border-b border-gray-400/30 grid md:grid-cols-8 grid-cols-5 md:px-5 py-2 ">
+                <div className="text-textGray md:col-span-4 col-span-1  ">
                   {" "}
                   <h3>Product Name</h3>
                 </div>
-                <div className="col-span-4  grid grid-cols-4">
-                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
+                <div className="md:col-span-4 col-span-4  grid grid-cols-4">
+                  <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1 ">
                     Views <HiArrowsUpDown />
                   </h4>
                   <h4 className="flex items-center text-textGray text-sm gap-1 col-span-1">
@@ -108,7 +108,7 @@ const Products = () => {
             </div>
 
             {/* graph */}
-            <div className="col-span-3 bg-dashboard rounded-2xl w-full h-72 px-8 py-6">
+            <div className="md:col-span-3 col-span-12 bg-dashboard rounded-2xl w-full h-72 px-8 py-6 ">
               <StatsGraph stroke={"#ffa800"} />
             </div>
           </div>

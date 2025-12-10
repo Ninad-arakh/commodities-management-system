@@ -45,7 +45,7 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <div className="w-full flex justify-between shadow-lg md:shadow-2xs">
+    <div className="w-full flex justify-between shadow-2xs">
       {showModal && (
         <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8">
           <button
@@ -56,6 +56,15 @@ const Navbar = () => {
             }}
           >
             Log Out <IoLogOutOutline />
+          </button>
+
+          <button
+            className="flex gap-3 items-center justify-center md:text-sm font-bold"
+            onClick={() => {
+              router.replace("/products");
+            }}
+          >
+            Products 
           </button>
         </div>
       )}

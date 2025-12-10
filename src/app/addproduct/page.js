@@ -49,10 +49,10 @@ const AddProduct = () => {
   }, []);
   return (
     <div className="grid grid-cols-12 relative bg-pageBackground gap-2  pb-4">
-      <div className="col-span-2 hidden md:block  h-screen sticky top-0 ">
+      <div className="col-span-2 hidden md:block h-screen sticky top-0 ">
         <Sidebar />
       </div>
-      <div className="col-span-10  py-4 px-5 pt-8 ">
+      <div className="col-span-12 md:col-span-10  py-4 px-5 pt-8 ">
         {/* React Toastify Container */}
         <ToastContainer
           position="bottom-right"
@@ -96,8 +96,8 @@ const AddProduct = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 w-full mt-6 gap-6">
-          <div className="col-span-8">
+        <div className="grid grid-cols-12 w-full mt-6 gap-6 ">
+          <div className="col-span-12 md:col-span-8">
             <div className=" bg-dashboard rounded-xl px-8 py-5 w-full">
               <h2 className="font-semibold">General Information</h2>
               <div className="mt-5">
@@ -216,7 +216,7 @@ const AddProduct = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 bg-dashboard rounded-xl px-8 py-5">
+          <div className="col-span-12 md:col-span-4 bg-dashboard rounded-xl px-8 py-5">
             product image and thumbnail here
           </div>
         </div>
