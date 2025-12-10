@@ -15,6 +15,7 @@ const Navbar = () => {
   const [isDark, setIsDark] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+  const [user, setUser] = useState(null);
 
   // Load saved theme on component mount
   useEffect(() => {
@@ -22,6 +23,13 @@ const Navbar = () => {
     if (savedTheme === "dark") {
       setIsDark(true);
       document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const rawUser = localStorage.getItem("user");
+      setUser(JSON.parse(rawUser));
     }
   }, []);
 
@@ -42,7 +50,10 @@ const Navbar = () => {
         <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8">
           <button
             className="flex gap-3 items-center justify-center text-sm"
-            onClick={() => {localStorage.clear(); router.replace("/login")}}
+            onClick={() => {
+              localStorage.clear();
+              router.replace("/login");
+            }}
           >
             Log Out <IoLogOutOutline />
           </button>
@@ -59,10 +70,17 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-3 items-center">
-        <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
-          <h2 className="text-sm ">Admin</h2>
-          <RiArrowDropDownLine />
-        </div>
+        {user && user.isManager ? (
+          <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
+            <h2 className="text-sm ">Admin</h2>
+            <RiArrowDropDownLine />
+          </div>
+        ) : (
+          <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
+            <h2 className="text-sm ">Keeper</h2>
+            <RiArrowDropDownLine />
+          </div>
+        )}
 
         <div className="flex gap-2">
           {isDark ? (
@@ -83,7 +101,11 @@ const Navbar = () => {
         <MdOutlineNotificationsActive className="w-6 h-6 cursor-pointer" />
 
         <div className="w-7 h-7 bg-gray-400 rounded-full overflow-hidden cursor-pointer ">
-          <Image src={userPic} alt="userProfile" onClick={() => setShowModal(!showModal)}/>
+          <Image
+            src={userPic}
+            alt="userProfile"
+            onClick={() => setShowModal(!showModal)}
+          />
         </div>
       </div>
     </div>

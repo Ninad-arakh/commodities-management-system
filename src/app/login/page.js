@@ -83,7 +83,7 @@ const Login = () => {
     try {
       validator(); // run all validations first
 
-      const trimmedEmail = email.trim();
+      const trimmedEmail = email.trim().toLowerCase();
       const trimmedPass = password.trim();
 
       // Mock user object (placeholder for real backend auth)

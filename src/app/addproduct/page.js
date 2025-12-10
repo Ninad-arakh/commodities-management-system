@@ -82,9 +82,11 @@ const AddProduct = () => {
         <div className="w-full mt-8 flex justify-between items-center px-6 bg-dashboard py-5 rounded-xl">
           <h2>Add New Product</h2>
           <div className="flex gap-3">
-            <button className="px-1 py-1 rounded-lg border border-red-500/80 text-sm text-red-500 cursor-pointer">
-              Discard change
-            </button>
+            <Link href={"/products"}>
+              <button className="px-1 py-1 rounded-lg border border-red-500/80 text-sm text-red-500 cursor-pointer">
+                Discard change
+              </button>{" "}
+            </Link>
             <button
               className="px-1 py-1 rounded-lg bg-blue-500 text-sm text-white cursor-pointer"
               onClick={() => addProductHandler()}
