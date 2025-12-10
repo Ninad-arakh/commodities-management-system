@@ -8,18 +8,18 @@ const StatsOneGraphs = () => {
   return (
     <div>
       <div className="grid grid-cols-12 gap-6 mt-7 ">
-        <div className="col-span-8 rounded-xl p-7 bg-dashboard">
+        <div className="md:col-span-8 col-span-12 rounded-xl p-7 bg-dashboard">
           <Linechart />
         </div>
-        <div className="col-span-4 rounded-xl px-7 bg-dashboard">
+        <div className="md:col-span-4 col-span-12 rounded-xl px-7 bg-dashboard">
           <Barchart />
         </div>
       </div>
       <div className="grid grid-cols-12 gap-6 mt-7 ">
-        <div className="col-span-8 rounded-xl p-7 bg-dashboard">
+        <div className="md:col-span-8 col-span-12 rounded-xl p-7 bg-dashboard">
           <EarningsChart />
         </div>
-        <div className="col-span-4 rounded-xl p-7 bg-dashboard">
+        <div className="md:col-span-4 col-span-12 rounded-xl p-7 bg-dashboard">
           <Subscriptions />
         </div>
       </div>

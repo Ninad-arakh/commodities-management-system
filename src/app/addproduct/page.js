@@ -49,7 +49,7 @@ const AddProduct = () => {
   }, []);
   return (
     <div className="grid grid-cols-12 relative bg-pageBackground gap-2  pb-4">
-      <div className="col-span-2 h-screen sticky top-0 ">
+      <div className="col-span-2 hidden md:block  h-screen sticky top-0 ">
         <Sidebar />
       </div>
       <div className="col-span-10  py-4 px-5 pt-8 ">

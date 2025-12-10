@@ -13,19 +13,19 @@ import Barchart2 from "./Barchart2";
 const StatsTwoGraph = () => {
   return (
     <div className="grid grid-cols-12 gap-3 mt-7 ">
-      <div className="col-span-4 rounded-xl bg-dashboard p-7 relative">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7 relative">
         <StatsGraph stroke={"#23a952"} />
       </div>
 
-      <div className="col-span-4 rounded-xl bg-dashboard p-7 relative">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7 relative">
         <StatsGraph stroke={"#773ac5"} />
       </div>
 
-      <div className="col-span-4 rounded-xl bg-dashboard p-7 relative">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7 relative">
         <StatsGraph stroke={"#ffa800"} />
       </div>
 
-      <div className="col-span-4 rounded-xl bg-dashboard p-7  relative">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7  relative">
         <div>
             <h1 className="font-bold text-xl">Subscriptions Performance</h1>
             <p className="text-textGray">Follower this Year</p>
@@ -45,7 +45,7 @@ const StatsTwoGraph = () => {
       </div>
 
         {/* top sales products */}
-      <div className="col-span-4 rounded-xl bg-dashboard p-7 gap-5">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7 gap-5">
         <div className="w-full ">
           <h2 className="text-xl font-bold">Top Product Sales</h2>
           <p className="text-textGray">Manage your Payments</p>
@@ -73,7 +73,7 @@ const StatsTwoGraph = () => {
       </div>
 
       {/* payment history */}
-      <div className="col-span-4 rounded-xl bg-dashboard p-7">
+      <div className="col-span-12 sm:col-span-6 overflow-hidden md:col-span-4 rounded-xl bg-dashboard p-7">
         <div className="w-full ">
           <h2 className="text-xl font-bold">Payment History</h2>
           <p className="text-textGray">Manage Your Payments</p>

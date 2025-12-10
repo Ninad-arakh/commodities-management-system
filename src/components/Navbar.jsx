@@ -45,11 +45,11 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <div className="w-full flex justify-between ">
+    <div className="w-full flex justify-between shadow-lg md:shadow-2xs">
       {showModal && (
         <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8">
           <button
-            className="flex gap-3 items-center justify-center text-sm"
+            className="flex gap-3 items-center justify-center md:text-sm font-bold"
             onClick={() => {
               localStorage.clear();
               router.replace("/login");
@@ -59,17 +59,17 @@ const Navbar = () => {
           </button>
         </div>
       )}
-      <div className="flex gap-6">
-        <div className="flex items-center gap-2  bg-dashboard rounded-lg w-[25vw] px-2">
+      <div className="flex md:gap-6 gap-2 ">
+        <div className="flex items-center gap-2  bg-dashboard  rounded-lg w-[25vw] px-2">
           <input type="text" className="flex-1 outline-none " />
           <IoIosSearch className="text-gray-500" />
         </div>
-        <button className="px-3 py-1 bg-[#1777ff] text-white rounded-lg cursor-pointer text-sm">
+        <button className="md:px-3 px-1 py-1 bg-[#1777ff] text-white rounded-lg cursor-pointer text-sm">
           Search
         </button>
       </div>
 
-      <div className="flex gap-3 items-center">
+      <div className="flex  md:gap-3 gap-1 items-center">
         {user && user.isManager ? (
           <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
             <h2 className="text-sm ">Admin</h2>

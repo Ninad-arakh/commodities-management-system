@@ -1,8 +1,7 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import { VscGraph } from "react-icons/vsc";
 import Overview from "@/components/Overview";
 import ResentSales from "@/components/RecentSales";
@@ -38,12 +37,11 @@ const Dashboard = () => {
 
   return (
     <div className="bg-pageBackground w- box-border grid grid-cols-12 gap-2 relative pb-4">
-      <div className="sm:col-span-2  h-screen sticky top-0">
-        {" "}
+      <div className="sm:col-span-2 hidden md:block h-screen sticky top-0">
         <Sidebar />
       </div>
 
-      <div className=" md:col-span-10 col-span-12  py-4 px-5 pt-8 ">
+       <div className=" md:col-span-10 col-span-12  py-4 px-5 pt-8 ">
         <Navbar />
 
         <div className="w-full mt-8 flex justify-between items-center px-1">
@@ -55,8 +53,9 @@ const Dashboard = () => {
           </Link>
         </div>
 
-        <div className="w-full px-1 grid md:grid-cols-4 grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
+        <div className="w-full px-1 grid md:grid-cols-4 grid-cols-1 sm:grid-cols-2 grid-row-4 gap-2 mt-4 ">
+
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1 row-span-1 ">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Total Earnings</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -68,7 +67,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1 row-span-1 ">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Views</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -80,7 +79,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1 row-span-1 ">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Total Sales</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -92,7 +91,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1">
+          <div className=" bg-dashboard rounded-lg px-5 py-3 flex flex-col gap-1 row-span-1 ">
             <div className="flex justify-between items-center rounded-lg">
               <h2 className="text-lg font-medium">Subscriptions</h2>
               <VscGraph className="border p-px border-gray-500/40" />
@@ -105,11 +104,11 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-6  w-full mt-8">
-          <div className="col-span-7 bg-dashboard rounded-xl ">
+        <div className="grid grid-cols-12 gap-6  w-full mt-8 ">
+          <div className="md:col-span-7 h-[350px] md:h-auto col-span-12 bg-dashboard rounded-xl ">
             <Overview />
           </div>
-          <div className="col-span-5 bg-dashboard rounded-xl">
+          <div className="md:col-span-5 col-span-12 bg-dashboard rounded-xl">
             <ResentSales />
           </div>
         </div>
@@ -120,7 +119,7 @@ const Dashboard = () => {
         <div className="w-full mt-8">
           <StatsTwo />
         </div>
-      </div>
+      </div> 
     </div>
   );
 };
