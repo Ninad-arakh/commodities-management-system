@@ -7,7 +7,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Product = ({ product }) => {
+const Product = ({ product, user }) => {
   const { productName, views, pricing, revenue, id } = product;
 
   const handleDelete = async () => {
@@ -61,12 +61,12 @@ const Product = ({ product }) => {
           <button className="flex col-span-1 items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70">
             Edit <RiArrowDropDownLine />
           </button>
-          <button
+          {user.isManager && <button
             className="flex col-span-1 items-center border rounded-lg px-1 text-xs cursor-pointer border-gray-300/70"
             onClick={() => handleDelete()}
           >
             Delete
-          </button>
+          </button>}
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ const Products = () => {
   const router = useRouter();
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null)
 
   const getProducts = async () => {
     const response = await axios.get(`/api/products/`);
@@ -28,6 +29,7 @@ const Products = () => {
     if (typeof window === "undefined") return;
     const rawUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
+    setUser(JSON.parse(rawUser))
     if (!rawUser || !token) {
       router.replace("/login");
       return;
@@ -101,7 +103,7 @@ const Products = () => {
               {products !== null && (
                 <div className="w-full">
                   {products.map((p, id) => (
-                    <Product product={p} key={id} />
+                    <Product product={p} key={id} user={user}/>
                   ))}
                 </div>
               )}
