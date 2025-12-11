@@ -12,6 +12,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import Link from "next/link";
+import ShimmerNav from "./ShimmerNav";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false);
@@ -45,94 +46,101 @@ const Navbar = () => {
       localStorage.setItem("theme", "light");
     }
   }, [isDark]);
-
-  return (
-    <div className="w-full flex justify-between shadow-2xs">
-      {showModal && (
-        <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8 flex flex-col gap-1 z-10">
-          <Link
-            href={"/dashboard "}
-            className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
-          >
-            Dashboard <RxDashboard className="w-5 h-5 cursor-pointer" />
-          </Link>
-
-          <button
-            className="flex gap-3 items-center justify-center md:text-sm font-bold  border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
-            onClick={() => {
-              router.replace("/products");
-            }}
-          >
-            Products <MdProductionQuantityLimits />
-          </button>
-
-          <div className="flex gap-2 ">
-            {isDark ? (
-              <button
+  if (user === null) {
+    return <ShimmerNav />;
+  } else {
+    return (
+      <div className="w-full flex justify-between shadow-2xs">
+        {showModal && (
+          <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8 flex flex-col gap-1 z-10">
+            {user.isManager && (
+              <Link
+                href={"/dashboard "}
                 className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
-                onClick={() => setIsDark(!isDark)}
               >
-                Dark <FiSun className="w-5 h-5 text-white cursor-pointer" />
-              </button>
-            ) : (
-              <button
-                className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
-                onClick={() => setIsDark(!isDark)}
-              >
-                Light <IoIosMoon className="w-5 h-5  cursor-pointer" />
-              </button>
+                Dashboard <RxDashboard className="w-5 h-5 cursor-pointer" />
+              </Link>
             )}
-          </div>
-          <button
-            className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
-            onClick={() => {
-              localStorage.clear();
-              router.replace("/login");
-            }}
-          >
-            Log Out <IoLogOutOutline />
-          </button>
-        </div>
-      )}
-      <div className="flex md:gap-6 gap-2 ">
-        <div className="flex items-center gap-2  bg-dashboard  rounded-lg w-[25vw] px-2">
-          <input type="text" className="flex-1 outline-none " />
-          <IoIosSearch className="text-gray-500" />
-        </div>
-        <button className="md:px-3 px-1 py-1 bg-[#1777ff] text-white rounded-lg cursor-pointer text-sm">
-          Search
-        </button>
-      </div>
 
-      <div className="flex  md:gap-3 gap-1 items-center">
-        {user && user.isManager ? (
-          <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
-            <h2 className="text-sm ">Admin</h2>
-            <RiArrowDropDownLine />
-          </div>
-        ) : (
-          <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
-            <h2 className="text-sm ">Keeper</h2>
-            <RiArrowDropDownLine />
+            <button
+              className="flex gap-3 items-center justify-center md:text-sm font-bold  border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+              onClick={() => {
+                router.replace("/products");
+              }}
+            >
+              Products <MdProductionQuantityLimits />
+            </button>
+
+            <div className="flex gap-2 ">
+              {isDark ? (
+                <button
+                  className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+                  onClick={() => setIsDark(!isDark)}
+                >
+                  Dark <FiSun className="w-5 h-5 text-white cursor-pointer" />
+                </button>
+              ) : (
+                <button
+                  className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+                  onClick={() => setIsDark(!isDark)}
+                >
+                  Light <IoIosMoon className="w-5 h-5  cursor-pointer" />
+                </button>
+              )}
+            </div>
+            <button
+              className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+              onClick={() => {
+                localStorage.clear();
+                router.replace("/login");
+              }}
+            >
+              Log Out <IoLogOutOutline />
+            </button>
           </div>
         )}
+        <div className="flex md:gap-6 gap-2 ">
+          <div className="flex items-center gap-2  bg-dashboard  rounded-lg w-[25vw] px-2">
+            <input type="text" className="flex-1 outline-none " />
+            <IoIosSearch className="text-gray-500" />
+          </div>
+          <button className="md:px-3 px-1 py-1 bg-[#1777ff] text-white rounded-lg cursor-pointer text-sm">
+            Search
+          </button>
+        </div>
 
-        <Link href={"/dashboard "}>
-          <RxDashboard className="w-6 h-6 cursor-pointer" />
-        </Link>
+        <div className="flex  md:gap-3 gap-1 items-center">
+          {user && user.isManager ? (
+            <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
+              <h2 className="text-sm ">Admin</h2>
+              <RiArrowDropDownLine />
+            </div>
+          ) : (
+            <div className="flex gap-1 rounded-sm px-2 py-1 items-center bg-dashboard shadow cursor-pointer">
+              <h2 className="text-sm ">Keeper</h2>
+              <RiArrowDropDownLine />
+            </div>
+          )}
 
-        <MdOutlineNotificationsActive className="w-6 h-6 cursor-pointer" />
+          {user.isManager && (
+            <Link href={"/dashboard "}>
+              <RxDashboard className="w-6 h-6 cursor-pointer" />
+            </Link>
+          )}
 
-        <div className="w-7 h-7 bg-gray-400 rounded-full overflow-hidden cursor-pointer ">
-          <Image
-            src={userPic}
-            alt="userProfile"
-            onClick={() => setShowModal(!showModal)}
-          />
+          <MdOutlineNotificationsActive className="w-6 h-6 cursor-pointer" />
+
+          <div className="w-7 h-7 bg-gray-400 rounded-full overflow-hidden cursor-pointer ">
+            <Image
+              src={userPic}
+              alt="userProfile"
+              onClick={() => setShowModal(!showModal)}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Navbar;

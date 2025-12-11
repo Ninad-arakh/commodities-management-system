@@ -1,6 +1,7 @@
 "use client";
+import ShimmerUi from "@/components/ShimmerUi";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 /**
  * Root Redirect Page
@@ -9,6 +10,7 @@ import React, { useEffect } from "react";
  */
 const page = () => {
   const router = useRouter();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     /**
@@ -21,23 +23,29 @@ const page = () => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user");
       const userObj = JSON.parse(storedUser);
+      setUser(JSON.parse(storedUser));
 
       if (userObj) {
         // Role-based redirection
-        userObj.isManager ? router.push("/dashboard") : router.push("/products");
+        userObj.isManager
+          ? router.push("/dashboard")
+          : router.push("/products");
       } else {
         // No session present → send to login page
         router.push("/login");
       }
     }
   }, []);
-
-  return (
-    <div>
-      {/* Empty placeholder — page exists only for routing logic */}
-      <h2 className=""></h2>
-    </div>
-  );
+  if (user === null) {
+    return <ShimmerUi />;
+  } else {
+    return (
+      <div>
+        {/* Empty placeholder — page exists only for routing logic */}
+        <h2 className=""></h2>
+      </div>
+    );
+  }
 };
 
 export default page;
