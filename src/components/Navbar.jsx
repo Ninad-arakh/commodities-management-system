@@ -10,6 +10,8 @@ import userPic from "@/assets/office.png";
 import Image from "next/image";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useRouter } from "next/navigation";
+import { MdProductionQuantityLimits } from "react-icons/md";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false);
@@ -47,24 +49,48 @@ const Navbar = () => {
   return (
     <div className="w-full flex justify-between shadow-2xs">
       {showModal && (
-        <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8">
+        <div className="absolute bg-pageBackground shadow-xl border border-gray-400/60 rounded-xl p-8 top-15 right-8 flex flex-col gap-1 z-10">
+          <Link
+            href={"/dashboard "}
+            className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+          >
+            Dashboard <RxDashboard className="w-5 h-5 cursor-pointer" />
+          </Link>
+
           <button
-            className="flex gap-3 items-center justify-center md:text-sm font-bold"
+            className="flex gap-3 items-center justify-center md:text-sm font-bold  border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+            onClick={() => {
+              router.replace("/products");
+            }}
+          >
+            Products <MdProductionQuantityLimits />
+          </button>
+
+          <div className="flex gap-2 ">
+            {isDark ? (
+              <button
+                className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+                onClick={() => setIsDark(!isDark)}
+              >
+                Dark <FiSun className="w-5 h-5 text-white cursor-pointer" />
+              </button>
+            ) : (
+              <button
+                className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
+                onClick={() => setIsDark(!isDark)}
+              >
+                Light <IoIosMoon className="w-5 h-5  cursor-pointer" />
+              </button>
+            )}
+          </div>
+          <button
+            className="flex gap-3 items-center justify-center md:text-sm font-bold border px-3 py-1 rounded-lg border-gray-300 cursor-pointer w-[35vw] md:w-[15vw]"
             onClick={() => {
               localStorage.clear();
               router.replace("/login");
             }}
           >
             Log Out <IoLogOutOutline />
-          </button>
-
-          <button
-            className="flex gap-3 items-center justify-center md:text-sm font-bold"
-            onClick={() => {
-              router.replace("/products");
-            }}
-          >
-            Products 
           </button>
         </div>
       )}
@@ -91,21 +117,9 @@ const Navbar = () => {
           </div>
         )}
 
-        <div className="flex gap-2">
-          {isDark ? (
-            <FiSun
-              className="w-6 h-6 text-white cursor-pointer"
-              onClick={() => setIsDark(!isDark)}
-            />
-          ) : (
-            <IoIosMoon
-              className="w-6 h-6  cursor-pointer"
-              onClick={() => setIsDark(!isDark)}
-            />
-          )}
-        </div>
-
-        <RxDashboard className="w-6 h-6 cursor-pointer" />
+        <Link href={"/dashboard "}>
+          <RxDashboard className="w-6 h-6 cursor-pointer" />
+        </Link>
 
         <MdOutlineNotificationsActive className="w-6 h-6 cursor-pointer" />
 
